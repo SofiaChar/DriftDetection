@@ -125,6 +125,10 @@
       - name: preprocess
         type: execution
         step: prepare_data
+        override:
+          inputs:
+          - name: dataset
+            default: s3://valohai-demo-library-data/drift-detection/drifted_colorspace.zip
       - name: training
         type: execution
         step: train_model
