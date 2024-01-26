@@ -31,6 +31,7 @@
     image: ultralytics/yolov5
     command:
       - pip install valohai-utils
+      - nohup python valohai_watch.py &
       - python train.py {parameters}
     inputs:
       - name: train
@@ -121,9 +122,11 @@
 
 - step:
     name: gather
-    image: ultralytics/yolov5
+    image: python:3.9
     environment: staging-aws-eu-west-1-p2-xlarge
     command:
+      - pip install requests
+      - pip install os
       - python gather_metrics.py
 
 
