@@ -65,8 +65,6 @@
         default: /valohai/outputs/
         type: string
         description: save to project/name
-      - name: test-empty-var
-        default: ""
 
 - step:
     name: evaluation
@@ -120,6 +118,14 @@
     - name: save_results
       default: 0
       type: integer
+
+- step:
+    name: gather
+    image: ultralytics/yolov5
+    environment: staging-aws-eu-west-1-p2-xlarge
+    command:
+      - python gather_metrics.py
+
 
 - pipeline:
     name: train-val-pipeline
