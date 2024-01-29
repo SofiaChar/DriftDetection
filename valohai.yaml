@@ -126,7 +126,6 @@
     environment: staging-aws-eu-west-1-p2-xlarge
     command:
       - pip install requests
-      - pip install os
       - python gather_metrics.py
 
 
@@ -142,6 +141,9 @@
       - name: evaluation
         type: execution
         step: evaluation
+        override:
+          inputs:
+            - name: model
     edges:
       - [preprocess.parameter.image_size, training.parameter.image_size]
       - [training.output.*best.pt, evaluation.input.model]
