@@ -138,6 +138,9 @@
       - name: training
         type: execution
         step: train_model
+        override:
+          inputs:
+            - name: train
       - name: evaluation
         type: execution
         step: evaluation
